@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import CarouselSlide from './CarouselSlide';
 import { SLIDE_INFO } from './constants';
@@ -34,6 +34,23 @@ function App() {
             setSlideIn(true);
         }, 500);
     };
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.keyCode === 39) {
+                onArrowClick('right');
+            }
+            if (e.keyCode === 37) {
+                onArrowClick('left');
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    });
 
     return (
         <div className='App'>
