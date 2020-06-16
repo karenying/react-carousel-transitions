@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
 import CarouselSlide from './CarouselSlide';
+import { SLIDE_INFO } from './constants';
 
 function App() {
+    const content = SLIDE_INFO[3];
+
     return (
         <div className='App'>
-            <CarouselSlide
-                content={{ backgroundColor: '#ff7c7c', title: 'Slide 1' }}
-            />
+            <CarouselSlide content={content} />
         </div>
     );
 }
